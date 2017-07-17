@@ -67,12 +67,17 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
         mHeader.invalidate();
     }
 
+<<<<<<< HEAD
     //attention 测量过程
+=======
+    //attention 测量过程，通知父布局占有多大地
+>>>>>>> 87ee782d6d9e55a2359ab37b0d3eb08d6b462f2c
     private void measureView(View view) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         if (layoutParams == null) {
             layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
+<<<<<<< HEAD
         //由layoutParams得到宽的MeasureSpec
         int width = getChildMeasureSpec(0, 0, layoutParams.width);
         int height;
@@ -85,6 +90,16 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
             height = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         }
         //实际的测量，根据宽和高
+=======
+        int width = getChildMeasureSpec(0, 0, layoutParams.width);
+        int height;
+        int tempHeight = layoutParams.height;
+        if (tempHeight > 0) {
+            height = MeasureSpec.makeMeasureSpec(tempHeight, MeasureSpec.EXACTLY);
+        } else {
+            height = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        }
+>>>>>>> 87ee782d6d9e55a2359ab37b0d3eb08d6b462f2c
         view.measure(width, height);
     }
 
